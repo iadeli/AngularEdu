@@ -1,0 +1,18 @@
+<app-lifecycle-example [inputValue]="1"></app-lifecycle-example>
+<app-lifecycle-template-example></app-lifecycle-template-example>
+<app-content-child-example>
+    <h1 #contentParagraph>Getting Access to ng-content with @ContentChild</h1>
+</app-content-child-example>
+<p appHighlight>Hover over this paragraph to see the highlighting effect!</p>
+<hr />
+<p appCustomColor="red">This text will be red</p>
+<p appCustomColor="blue">This text will be blue</p>
+<p appCustomColor="green">This text will be green</p>
+<hr />
+<button (click)="showContent = !showContent;">toggle Below Content</button>
+<div *appCustomIf="showContent">
+    <p>This content is conditionally rendered.</p>
+</div>
+<hr />
+<app-switch></app-switch>
+<hr />
