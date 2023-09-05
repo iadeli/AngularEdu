@@ -1,8 +1,8 @@
 <!-- <app-lifecycle-example [inputValue]="1"></app-lifecycle-example> -->
 <!-- <app-lifecycle-template-example></app-lifecycle-template-example> -->
-<!-- <app-content-child-example>
-    <h1 #contentParagraph>Getting Access to ng-content with @ContentChild</h1>
-</app-content-child-example> -->
+<app-content-child-example>
+    <h1 *ngIf="showContent" #contentParagraph>Getting Access to ng-content with @ContentChild</h1>
+</app-content-child-example>
 <!-- <p appHighlight>Hover over this paragraph to see the highlighting effect!</p>
 <hr /> -->
 <!-- <p appCustomColor="red">This text will be red</p>
@@ -17,5 +17,5 @@
 <!-- <app-switch></app-switch>
 <hr /> -->
 <!-- <app-example></app-example> -->
-<app-sender></app-sender>
-<app-receiver></app-receiver>
+<!-- <app-sender></app-sender>
+<app-receiver></app-receiver> -->

@@ -1,1 +1,20 @@
-<app-demo></app-demo>
+<!-- <app-demo></app-demo> -->
+<div style="display: flex;">
+    <nav style="flex: 1;">
+        <ul style="list-style-type: none; padding: 0;">
+            <!-- با استفاده از  `{ اکزاکت: ترو }` ، شما می‌توانید کنترل دقیق‌تری بر روی وضعیت فعال بودن لینک‌ها داشته باشید
+                 و فقط زمانی لینک را به عنوان فعال در نظر بگیرید که بوی به طور دقیق با مسیر لینک مطابقت داشته باشد. -->
+            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+            <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+            <li><a routerLink="/contact">Contact</a></li>
+            <li><a routerLink="/profile" [queryParams]="{ category: 'all', price:'8000' }">Profile</a></li>
+            <!-- queryParamsHandling="preserve" -->
+            <li><a routerLink="/products" [queryParams]="{ category: 'electronics' }"
+                queryParamsHandling="merge">Products</a></li>
+            <li><a routerLink="/protected">Protected</a></li>
+        </ul>
+    </nav>
+    <section style="flex: 3;">
+        <router-outlet></router-outlet>
+    </section>
+</div>

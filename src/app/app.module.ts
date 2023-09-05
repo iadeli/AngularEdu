@@ -13,6 +13,17 @@ import { SwitchComponent } from './features/directives/switch.component';
 import { ExampleComponent } from './features/using-services-dependency-injection/example.component';
 import { SenderComponent } from './features/using-services-dependency-injection/sender.component';
 import { ReceiverComponent } from './features/using-services-dependency-injection/receiver.component';
+import { HomeComponent } from './features/Changing Pages with Routing/home.component';
+import { AboutComponent } from './features/Changing Pages with Routing/about.component';
+import { ContactComponent } from './features/Changing Pages with Routing/contact.component';
+import { ProfileComponent } from './features/Changing Pages with Routing/profile.component';
+import { ProfileInfoComponent } from './features/Changing Pages with Routing/profile-info.component';
+import { ProfileSettingsComponent } from './features/Changing Pages with Routing/profile-settings.component';
+import { ProfileOrdersComponent } from './features/Changing Pages with Routing/profile-orders.component';
+import { ProductListComponent } from './features/Changing Pages with Routing/product-list.component';
+import { NotFoundComponent } from './features/Changing Pages with Routing/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CanDeactivateGuard } from './features/Changing Pages with Routing/can-deactivate.guard';
 
 @NgModule({
   declarations: [
@@ -28,12 +39,22 @@ import { ReceiverComponent } from './features/using-services-dependency-injectio
     SwitchComponent,
     ExampleComponent,
     SenderComponent,
-    ReceiverComponent
+    ReceiverComponent,
+    HomeComponent,
+    AboutComponent,
+    ContactComponent,
+    ProfileComponent,
+    ProfileInfoComponent,
+    ProfileSettingsComponent,
+    ProfileOrdersComponent,
+    ProductListComponent,
+    NotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
