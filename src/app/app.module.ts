@@ -24,6 +24,9 @@ import { ProductListComponent } from './features/Changing Pages with Routing/pro
 import { NotFoundComponent } from './features/Changing Pages with Routing/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CanDeactivateGuard } from './features/Changing Pages with Routing/can-deactivate.guard';
+import { TemplateDrivenFormComponent } from './features/Handling Forms in Angular Apps/template-driven-form/template-driven-form.component';
+import { ReactiveFormComponent } from './features/Handling Forms in Angular Apps/reactive-form/reactive-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,11 +51,15 @@ import { CanDeactivateGuard } from './features/Changing Pages with Routing/can-d
     ProfileSettingsComponent,
     ProfileOrdersComponent,
     ProductListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TemplateDrivenFormComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [CanDeactivateGuard],
   bootstrap: [AppComponent]

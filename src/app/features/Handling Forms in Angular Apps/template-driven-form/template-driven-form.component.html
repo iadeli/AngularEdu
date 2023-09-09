@@ -1,0 +1,42 @@
+<h1>Template-Driven Form Example</h1>
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required [(ngModel)]="formData.name">
+    </div>
+    <button (click)="suggestUser()">suggest user</button>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required email #email="ngModel" [(ngModel)]="formData.email">
+        <div *ngIf="!email.valid && email.touched">Please enter a valid email!</div>
+    </div>
+    <div>
+        <label>
+            <input type="radio" name="gender" value="male" [(ngModel)]="formData.gender">
+            male
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="radio" name="gender" value="female" [(ngModel)]="formData.gender">
+            female
+        </label>
+    </div>
+    <div ngModelGroup="address">
+        <h2>Address</h2>
+        <div>
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" required ngModel>
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required ngModel>
+        </div>
+        <div>
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" name="zip" required ngModel>
+        </div>
+    </div>
+    <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    <button type="button" (click)="resetForm()">Reset Form</button>
+</form>

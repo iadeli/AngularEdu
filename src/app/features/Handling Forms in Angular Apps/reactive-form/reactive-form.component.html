@@ -1,0 +1,49 @@
+<h1>Reactive Form Example</h1>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+    </div>
+    <div *ngIf="nameControl && nameControl.hasError('customError')">Invalid input. Must not contain "user".</div>
+    <!-- <button (click)="suggestUser()">suggest user</button> -->
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email">
+        <div *ngIf="emailControl && !emailControl.valid && emailControl.touched">Please enter a valid email!</div>
+    </div>
+    <div>
+        <label>
+            <input type="radio" formControlName="gender" value="male">
+            male
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="radio" formControlName="gender" value="female">
+            female
+        </label>
+    </div>
+    <div formGroupName="address">
+        <h2>Address</h2>
+        <div>
+            <label for="street">Street:</label>
+            <input type="text" id="street" formControlName="street">
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" formControlName="city">
+        </div>
+        <div>
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" formControlName="zip">
+        </div>
+    </div>
+    <button type="button" (click)="addHobbie()">Add Hobbie</button>
+    <div formArrayName="hobbies">
+        <div *ngFor="let item of hobbiesControl.controls; let i = index">
+          <input [formControlName]="i" placeholder="hobbie {{ i + 1 }}">
+        </div>
+      </div>
+    <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    <!-- <button type="button" (click)="resetForm()">Reset Form</button> -->
+</form>

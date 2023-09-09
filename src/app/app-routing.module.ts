@@ -13,6 +13,8 @@ import { AuthChildGuard, AuthGuard } from './features/Changing Pages with Routin
 import { ProtectedComponent } from './features/Changing Pages with Routing/protected.component';
 import { ContactResolverService } from './features/Changing Pages with Routing/contact-resolver.service';
 import { CanDeactivateGuard } from './features/Changing Pages with Routing/can-deactivate.guard';
+import { TemplateDrivenFormComponent } from './features/Handling Forms in Angular Apps/template-driven-form/template-driven-form.component';
+import { ReactiveFormComponent } from './features/Handling Forms in Angular Apps/reactive-form/reactive-form.component';
 
 
 const routes: Routes = [
@@ -46,6 +48,8 @@ const routes: Routes = [
     },
     { path: 'products', component: ProductListComponent },
     { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
+    { path: 'template-driven-form', component: TemplateDrivenFormComponent },
+    { path: 'reactive-form', component: ReactiveFormComponent },
     { path: 'not-found', component: NotFoundComponent },
     { path: '**', redirectTo: 'not-found' }
 ];
