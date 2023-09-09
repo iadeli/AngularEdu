@@ -1,0 +1,21 @@
+<h2>Using Pipes </h2>
+<p>The current date is: {{ currentDate }}</p>
+<p>The current date is: {{ currentDate | date }}</p>
+<p>The current date is: {{ currentDate | date:'short' }}</p>
+<p>The current date is: {{ currentDate | date:'yyyy-MM-dd' }}</p>
+<hr />
+<h2>Parametrizing Pipes</h2>
+<p>The current temperature is: {{ temperature | temperatureConverter:'Celsius' }}</p>
+<hr />
+<h2>Chaining Multiple Pipes</h2>
+<p>The current date is: {{ currentDate | date | uppercase }}</p>
+<hr />
+<h2>Example_ Creating a Filter Pipe</h2>
+<button (click)="addFruit()">add fruit</button>
+<input type="text" [(ngModel)]="searchText" placeholder="Search">
+<ul>
+    <li *ngFor="let item of items | filter: searchText">{{ item }}</li>
+</ul>
+<hr />
+<h2>Understanding the _async_ Pipe</h2>
+<h1>{{ data$ | async }}</h1>

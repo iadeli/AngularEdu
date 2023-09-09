@@ -16,7 +16,7 @@ export class TemplateDrivenFormComponent implements OnInit {
   }
 
   formData = {
-    name: '',
+    name: 'aaa',
     email: '',
     gender: '',
     address: {

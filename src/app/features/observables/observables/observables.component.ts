@@ -1,25 +1,23 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject, Subscription, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject, Subject, Subscription, interval, of } from 'rxjs';
 import { map, filter, tap } from 'rxjs/operators';
 
+
 @Component({
-  template: `
-    <h1>Welcome to the Home Page</h1>
-    <nav>
-      <a [routerLink]="['/about']" [queryParams]="{ id: 1 }" fragment="section1">go to About</a><br />
-      <button (click)="goToAbout()">go to about programmatically</button>
-    </nav>
-    `
+  selector: 'app-observables',
+  templateUrl: './observables.component.html',
+  styleUrls: ['./observables.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class ObservablesComponent implements OnInit {
 
   subscription!: Subscription;
   data!: string;
-  constructor(private router: Router) { }
+  value$ = new BehaviorSubject<string>('Initial value');
+
+  constructor() { }
 
   ngOnInit(): void {
-    // آبزرویبل تابعی است که می تواند جریانی از مقادیر را به صورت همزمان یا ناهمزمان به یک آبزرور در طول زمان برگرداند.
+    // // آبزرویبل تابعی است که می تواند جریانی از مقادیر را به صورت همزمان یا ناهمزمان به یک آبزرور در طول زمان برگرداند.
     // this.subscription = interval(1000).subscribe(observer => {
     //   // آبزرور شی ای است که اعلان ها را از آبزرویبل دریافت می کند.
     //   console.log(observer);
@@ -45,11 +43,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     //   }
     // });
 
+
     // const customInterval = new Observable<number>(observer => {
     //   let count = 0;
     //   setInterval(() => {
     //     observer.next(count);
-    //     if (count === 5) {
+    //     if (count === 6) {
     //       observer.complete();
     //     }
     //     if (count > 3) {
@@ -70,6 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     //     console.log('completed!');
     //   }
     // })
+
 
     // const myObservable = of(1, 2, 3, 4, 5);
 
@@ -109,12 +109,53 @@ export class HomeComponent implements OnInit, OnDestroy {
     // subscription.unsubscribe();
   }
 
-  goToAbout() {
-    const _id = 1;
-    this.router.navigate(['/about'], { queryParams: { id: _id }, fragment: 'section1' })
+  updateValue() {
+    this.value$.next('Updated value');
+  }
+
+  showDiff() {
+    // Subject Example
+    const subject = new Subject<number>();
+    subject.subscribe(value => console.log('Subject:', value));
+    setTimeout(() => {
+      subject.subscribe(value => console.log('Subject:', value));
+    }, 3000);
+    subject.next(1);
+    subject.next(2);
+
+    // BehaviorSubject Example
+    const behaviorSubject = new BehaviorSubject<number>(0);
+    behaviorSubject.subscribe(value => console.log('BehaviorSubject:', value));
+    setTimeout(() => {
+      behaviorSubject.subscribe(value => console.log('BehaviorSubject another sub:', value));
+    }, 3000);
+    behaviorSubject.next(1);
+    behaviorSubject.next(2);
+
+    // ReplaySubject Example
+    const replaySubject = new ReplaySubject<number>(2);
+    replaySubject.subscribe(value => console.log('ReplaySubject:', value));
+    setTimeout(() => {
+      replaySubject.subscribe(value => console.log('ReplaySubject another sub:', value));
+    }, 3000);
+    replaySubject.next(1);
+    replaySubject.next(2);
+    replaySubject.next(3);
+
+    // AsyncSubject Example
+    const asyncSubject = new AsyncSubject<number>();
+    asyncSubject.subscribe(value => console.log('AsyncSubject:', value));
+    setTimeout(() => {
+      asyncSubject.subscribe(value => console.log('AsyncSubject another sub:', value));
+    }, 3000);
+    asyncSubject.next(1);
+    asyncSubject.next(2);
+    asyncSubject.complete();
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription)
+      this.subscription.unsubscribe();
   }
+
 }

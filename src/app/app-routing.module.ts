@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './features/Changing Pages with Routing/home.component';
-import { AboutComponent } from './features/Changing Pages with Routing/about.component';
-import { ContactComponent } from './features/Changing Pages with Routing/contact.component';
-import { ProfileComponent } from './features/Changing Pages with Routing/profile.component';
-import { ProfileInfoComponent } from './features/Changing Pages with Routing/profile-info.component';
-import { ProfileSettingsComponent } from './features/Changing Pages with Routing/profile-settings.component';
-import { ProfileOrdersComponent } from './features/Changing Pages with Routing/profile-orders.component';
-import { ProductListComponent } from './features/Changing Pages with Routing/product-list.component';
-import { NotFoundComponent } from './features/Changing Pages with Routing/not-found.component';
-import { AuthChildGuard, AuthGuard } from './features/Changing Pages with Routing/auth-guard.service';
-import { ProtectedComponent } from './features/Changing Pages with Routing/protected.component';
-import { ContactResolverService } from './features/Changing Pages with Routing/contact-resolver.service';
-import { CanDeactivateGuard } from './features/Changing Pages with Routing/can-deactivate.guard';
-import { TemplateDrivenFormComponent } from './features/Handling Forms in Angular Apps/template-driven-form/template-driven-form.component';
-import { ReactiveFormComponent } from './features/Handling Forms in Angular Apps/reactive-form/reactive-form.component';
+import { ObservablesComponent } from './features/observables/observables/observables.component';
+import { HomeComponent } from './features/changing-pages-with-routing/home.component';
+import { AboutComponent } from './features/changing-pages-with-routing/about.component';
+import { ContactComponent } from './features/changing-pages-with-routing/contact.component';
+import { CanDeactivateGuard } from './features/changing-pages-with-routing/can-deactivate.guard';
+import { ContactResolverService } from './features/changing-pages-with-routing/contact-resolver.service';
+import { ProfileComponent } from './features/changing-pages-with-routing/profile.component';
+import { AuthChildGuard, AuthGuard } from './features/changing-pages-with-routing/auth-guard.service';
+import { ProfileInfoComponent } from './features/changing-pages-with-routing/profile-info.component';
+import { ProfileSettingsComponent } from './features/changing-pages-with-routing/profile-settings.component';
+import { ProfileOrdersComponent } from './features/changing-pages-with-routing/profile-orders.component';
+import { ProductListComponent } from './features/changing-pages-with-routing/product-list.component';
+import { ProtectedComponent } from './features/changing-pages-with-routing/protected.component';
+import { TemplateDrivenFormComponent } from './features/handling-forms-in-angular-apps/template-driven-form/template-driven-form.component';
+import { ReactiveFormComponent } from './features/handling-forms-in-angular-apps/reactive-form/reactive-form.component';
+import { NotFoundComponent } from './features/changing-pages-with-routing/not-found.component';
+import { PipesComponent } from './features/using-pipes-to-transform-output/pipes/pipes.component';
 
 
 const routes: Routes = [
@@ -48,8 +50,10 @@ const routes: Routes = [
     },
     { path: 'products', component: ProductListComponent },
     { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
+    { path: 'observables', component: ObservablesComponent },
     { path: 'template-driven-form', component: TemplateDrivenFormComponent },
     { path: 'reactive-form', component: ReactiveFormComponent },
+    { path: 'pipes', component: PipesComponent },
     { path: 'not-found', component: NotFoundComponent },
     { path: '**', redirectTo: 'not-found' }
 ];
