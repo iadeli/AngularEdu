@@ -17,6 +17,8 @@ import { TemplateDrivenFormComponent } from './features/handling-forms-in-angula
 import { ReactiveFormComponent } from './features/handling-forms-in-angular-apps/reactive-form/reactive-form.component';
 import { NotFoundComponent } from './features/changing-pages-with-routing/not-found.component';
 import { PipesComponent } from './features/using-pipes-to-transform-output/pipes/pipes.component';
+import { HttpRequestExample1Component } from './features/making-http-requests/http-request-example1/http-request-example1.component';
+import { LoginComponent } from './features/authentication/login.component';
 
 
 const routes: Routes = [
@@ -54,6 +56,8 @@ const routes: Routes = [
     { path: 'template-driven-form', component: TemplateDrivenFormComponent },
     { path: 'reactive-form', component: ReactiveFormComponent },
     { path: 'pipes', component: PipesComponent },
+    { path: 'http-request-example1', component: HttpRequestExample1Component },
+    { path: 'login', component: LoginComponent },
     { path: 'not-found', component: NotFoundComponent },
     { path: '**', redirectTo: 'not-found' }
 ];

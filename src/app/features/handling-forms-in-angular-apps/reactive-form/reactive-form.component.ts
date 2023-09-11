@@ -15,8 +15,8 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
-      name: ['', [Validators.required, this.customValidator.bind(this)]],
-      // name: ['', [Validators.required], this.customAsyncValidator.bind(this)],
+      // name: ['', [Validators.required, this.customValidator.bind(this)]],
+      name: ['', [Validators.required], this.customAsyncValidator.bind(this)],
       email: ['', [Validators.required, Validators.email]],
       gender: ['male'],
       address: this.formBuilder.group({
@@ -28,13 +28,13 @@ export class ReactiveFormComponent implements OnInit {
     });
 
     this.myForm.valueChanges.subscribe({
-      next:(value) => {
+      next: (value) => {
         console.log(value);
       }
     })
 
     this.myForm.statusChanges.subscribe({
-      next:(status) => {
+      next: (status) => {
         console.log(status);
       }
     })

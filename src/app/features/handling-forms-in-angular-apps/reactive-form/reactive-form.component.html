@@ -41,9 +41,9 @@
     <button type="button" (click)="addHobbie()">Add Hobbie</button>
     <div formArrayName="hobbies">
         <div *ngFor="let item of hobbiesControl.controls; let i = index">
-          <input [formControlName]="i" placeholder="hobbie {{ i + 1 }}">
+            <input [formControlName]="i" placeholder="hobbie {{ i + 1 }}">
         </div>
-      </div>
+    </div>
     <button type="submit" [disabled]="!myForm.valid">Submit</button>
     <!-- <button type="button" (click)="resetForm()">Reset Form</button> -->
 </form>

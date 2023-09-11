@@ -26,7 +26,7 @@
         <h2>Address</h2>
         <div>
             <label for="street">Street:</label>
-            <input type="text" id="street" name="street" required ngModel>
+            <input type="text" id="street" name="street" required [(ngModel)]="formData.address.street">
         </div>
         <div>
             <label for="city">City:</label>

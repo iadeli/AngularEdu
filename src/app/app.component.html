@@ -1,6 +1,10 @@
 <!-- <app-demo></app-demo> -->
 <div style="display: flex;">
     <nav style="flex: 1;">
+        <div *ngIf="isAuthenticated">
+            <!-- Display authenticated user data or navigation links -->
+            <button (click)="logout()">Logout</button>
+        </div>
         <ul style="list-style-type: none; padding: 0;">
             <!-- با استفاده از  `{ اکزاکت: ترو }` ، شما می‌توانید کنترل دقیق‌تری بر روی وضعیت فعال بودن لینک‌ها داشته باشید
                  و فقط زمانی لینک را به عنوان فعال در نظر بگیرید که بوی به طور دقیق با مسیر لینک مطابقت داشته باشد. -->
@@ -16,6 +20,7 @@
             <li><a routerLink="/template-driven-form">Template Driven Form</a></li>
             <li><a routerLink="/reactive-form">Reactive Form</a></li>
             <li><a routerLink="/pipes">Pipes</a></li>
+            <li><a routerLink="/http-request-example1">Http Request Example 1</a></li>
         </ul>
     </nav>
     <section style="flex: 3;">

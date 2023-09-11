@@ -31,6 +31,12 @@ import { CanDeactivateGuard } from './features/changing-pages-with-routing/can-d
 import { PipesComponent } from './features/using-pipes-to-transform-output/pipes/pipes.component';
 import { TemperatureConverterPipe } from './features/using-pipes-to-transform-output/temperature-converter.pipe';
 import { FilterPipe } from './features/using-pipes-to-transform-output/filter.pipe';
+import { HttpRequestExample1Component } from './features/making-http-requests/http-request-example1/http-request-example1.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { RequestInterceptor } from './features/making-http-requests/request.interceptor';
+import { ResponseInterceptor } from './features/making-http-requests/response.interceptor';
+import { LoginComponent } from './features/authentication/login.component';
+import { AuthInterceptor } from './features/authentication/auth.interceptor';
 
 
 @NgModule({
@@ -62,15 +68,24 @@ import { FilterPipe } from './features/using-pipes-to-transform-output/filter.pi
     ObservablesComponent,
     PipesComponent,
     TemperatureConverterPipe,
-    FilterPipe
+    FilterPipe,
+    HttpRequestExample1Component,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [CanDeactivateGuard],
+  providers: [
+    CanDeactivateGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
