@@ -38,6 +38,10 @@ import { ResponseInterceptor } from './features/making-http-requests/response.in
 import { LoginComponent } from './features/authentication/login.component';
 import { AuthInterceptor } from './features/authentication/auth.interceptor';
 
+import { StoreModule } from '@ngrx/store';
+import { TodoModule } from './features/ngrx/todo.module';
+import { EffectsModule } from '@ngrx/effects';
+
 
 @NgModule({
   declarations: [
@@ -77,7 +81,10 @@ import { AuthInterceptor } from './features/authentication/auth.interceptor';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    TodoModule
   ],
   providers: [
     CanDeactivateGuard,

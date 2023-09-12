@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ObservablesComponent } from './features/observables/observables/observables.component';
 import { HomeComponent } from './features/changing-pages-with-routing/home.component';
 import { AboutComponent } from './features/changing-pages-with-routing/about.component';
@@ -19,6 +19,7 @@ import { NotFoundComponent } from './features/changing-pages-with-routing/not-fo
 import { PipesComponent } from './features/using-pipes-to-transform-output/pipes/pipes.component';
 import { HttpRequestExample1Component } from './features/making-http-requests/http-request-example1/http-request-example1.component';
 import { LoginComponent } from './features/authentication/login.component';
+import { TodoComponent } from './features/ngrx/component/todo.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
     { path: 'reactive-form', component: ReactiveFormComponent },
     { path: 'pipes', component: PipesComponent },
     { path: 'http-request-example1', component: HttpRequestExample1Component },
+    { path: 'ngrx', component: TodoComponent },
     { path: 'login', component: LoginComponent },
     { path: 'not-found', component: NotFoundComponent },
     { path: '**', redirectTo: 'not-found' }
@@ -64,7 +66,7 @@ const routes: Routes = [
 
 @NgModule({
     // , { useHash: true }
-    imports: [RouterModule.forRoot(routes, { useHash: true })],
+    imports: [RouterModule.forRoot(routes, { useHash: true, preloadingStrategy:PreloadAllModules })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
